@@ -1,0 +1,16 @@
+# OSX specific items
+.DS_Store
+
+# IDE stuff
+.idea
+.swp
+*.swp
+.vscode
+*.sublime-*
+.fleets
+
+# Personal ruun script
+runme.*
+testme.*
+tmp.txt
+*.backup

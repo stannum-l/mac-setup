@@ -1,0 +1,68 @@
+[alias]
+	co = checkout
+	cob = checkout -b
+	br = !git -P branch
+	ci = commit
+	st = status
+	p = pull --rebase --prune
+	pu = push
+	ps = push
+	f = fetch
+	cl = clone
+	d = diff
+	cm = !git add -A && git commit -m
+	sh = show
+	rev = review
+	prom = pull --rebase origin master
+	unstage = reset HEAD --
+	undo = reset HEAD~1 --mixed
+	amend = commit --amend
+	ane = commit --amend --no-edit
+	last = log -1 HEAD
+	author = commit --amend --reset-author --no-edit
+	now = commit --amend --date=now --no-edit
+	ign = update-index --assume-unchanged
+	unign = update-index --no-assume-unchanged
+	file-diff = diff --name-only HEAD~1
+	fp = push --force
+	sync = reset --hard origin/master
+	wipe = !git reset --hard && git clean -fxd
+	pushref = !git push origin HEAD:refs/for/$@
+	rmbr = !git br | grep -v -e main | xargs -r git br -D
+	rv = remote -v
+	r = restore
+	emp = !git commit --allow-empty -m 'This commit is intentionally left empty.'
+	squash-all = "!f(){ git reset $(git commit-tree HEAD^{tree} -m \"${1:-A new start}\");};f"
+	fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
+[core]
+	# editor = code --wait
+	editor = nvim
+	excludesfile = .gitignore_global
+	pager = less -F -X
+[submodule]
+	recurse = true
+[pull]
+	ff = only
+[merge]
+	log = 50
+[user]
+	email = @gmail.com
+	name = MyName
+	signingkey = 
+[init]
+	defaultBranch = main
+[credential]
+	helper = store
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[push]
+	autoSetupRemote = true
+[color]
+	ui = auto
+[rebase]
+	autosquash = true
+[commit]
+	gpgsign = true
